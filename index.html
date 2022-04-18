@@ -25,7 +25,7 @@ a:hover {
   margin-top:30px;
   width:93%;
   height:90%;
-  max-width:1366px;
+  max-width:1000px;
   max-height:768px;
   border: 4px solid #2938fa;
   background-color:#f8eaf3;
@@ -82,18 +82,56 @@ a:hover {
 #footer {
   height:20px;
 }
-/* Desktop View */
-@media (min-width:801px) {
+/* Medium View */
+@media (min-width:801px) and (max-width:1000px) {
+  #content {
+    font-size:19px;
+  }
+  #logo {
+    padding-bottom:20px;
+  }
+  #logo-img {
+    width:190px;
+  }
   #inner-left {
     padding-top:80px;
-    padding-left:80px;
-    width:260px;
+    padding-left:10%;
+    width:270px;
     float:left;
   }
   #diagram {
     float:left;
-    padding-top:150px;
-    padding-left:150px;
+    padding-top:200px;
+    padding-left:10%;
+  }
+  #diagram-img {
+    width:220px;
+  }
+}
+/* Desktop View */
+@media (min-width:1001px) {
+  #content {
+    font-size:24px;
+  }
+  #logo {
+    padding-bottom:20px;
+  }
+  #logo-img {
+    width:230px;
+  }
+  #inner-left {
+    padding-top:80px;
+    padding-left:100px;
+    width:280px;
+    float:left;
+  }
+  #diagram {
+    float:left;
+    padding-top:170px;
+    padding-left:110px;
+  }
+  #diagram-img {
+    width:300px;
   }
 }
 /* Mobile View */
@@ -103,7 +141,7 @@ a:hover {
     text-align:center;
   }
   #diagram {
-    padding-left:2px;
+    padding-left:4px;
   }
   #content {
     padding:18px;
@@ -113,6 +151,7 @@ a:hover {
     background-size:78px;
   }
   #text {
+    padding-left:2px;
     margin-top:10px;
     margin-bottom:-10px;
     /* text-align:justify; */
@@ -138,14 +177,14 @@ a:hover {
     <div id="left-div"></div>
     <div id="right-div">
       <div id="inner-left">
-      <div id="logo"><img src="images/Cypher Logo Small.png" width=200px></div>
+      <div id="logo"><img id="logo-img" src="images/Cypher Logo Small.png" width=200px></div>
       <div id="content">
         <div id="text">
           CYPHER offers custom bitcoin and dev education packages tailored to your company's needs. inquire by sending us a message to  <a href="mailto:ping@cypher.institute">ping@cypher.institute</a>, And we'll be in touch shortly.
         </div>
       </div>
       </div> <!-- inner left -->
-      <div id="diagram"><img src="images/Diagram.jpg"></div>
+      <div id="diagram"><img id="diagram-img" src="images/Diagram.jpg"></div>
     </div>
     </div> <!-- wrapper -->
 
