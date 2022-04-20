@@ -4,7 +4,7 @@
 <title>CYPHER</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 html,body {
@@ -45,7 +45,7 @@ a:hover {
   float:left;
   background:url("images/Buttons.jpg");
   background-repeat:no-repeat;
-  background-position: center;
+  background-position: calc(50% + 1px);
   background-color:#eca6d8;
   border-right: 4px solid #2938fa;
   margin-top:0px;
@@ -191,7 +191,7 @@ a:hover {
     <div id="header">
       <div id="header-left"></div>
       <div id="header-right">
-        <div style="display:inline-block;">CYPHER © BLOCK 670,660</div>
+        <div style="display:inline-block;">CYPHER • BLOCK <span id="block-height">670,660</id></div> <!-- © BLOCK 670,660 -->
         <div id="x">&nbsp;</div>
       </div>
     </div>
@@ -210,5 +210,32 @@ a:hover {
     </div> <!-- wrapper -->
 
     <div id="footer"> </div>
+
+<script>
+function getBlockHeight() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var blockHeight = JSON.parse(xhttp.responseText);
+            console.log(blockHeight);
+            $('#block-height').html(blockHeight.toLocaleString('en-US'));
+            //$('#usd').html((balance * exchangeRate).toLocaleString(undefined, {'minimumFractionDigits':2,'maximumFractionDigits':2}));
+        }
+        if (this.status == 400) {
+          console.log('got 400');
+        }
+    };
+    xhttp.open("GET", "https://blockstream.info/api/blocks/tip/height");
+    xhttp.send();
+}
+
+function updateBlockHeight() {
+  getBlockHeight();
+  setTimeout(updateBlockHeight, 1000 * 100);
+}
+
+updateBlockHeight();
+
+</script>
 </body>
 </html>
