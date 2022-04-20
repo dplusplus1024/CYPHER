@@ -30,11 +30,16 @@ a:hover {
   border: 4px solid #2938fa;
   background-color:#f8eaf3;
 }
+.fun {
+  border:0px!important;
+  background-color:transparent!important;
+  text-align:center!important;
+  margin-top:200px!important;
+}
 #header {
   background-color:#eca6d8;
   height:26px;
   border-bottom: 4px solid #2938fa;
-
   margin-left:0px;
   margin-right:0px;
   text-align:right;
@@ -73,6 +78,7 @@ a:hover {
   height:calc(100% - 31px);
 }
 #x {
+  cursor:pointer;
   overflow:hidden;
   background:url('images/x.png');
   background-color:#eca6d8;
@@ -212,7 +218,6 @@ a:hover {
       <div id="diagram"><img id="diagram-img" src="images/Diagram.jpg"></div>
     </div>
     </div> <!-- wrapper -->
-
     <div id="footer"> </div>
 
 <script>
@@ -223,7 +228,6 @@ function getBlockHeight() {
             var blockHeight = JSON.parse(xhttp.responseText);
             console.log(blockHeight);
             $('#block-height').html(blockHeight.toLocaleString('en-US'));
-            //$('#usd').html((balance * exchangeRate).toLocaleString(undefined, {'minimumFractionDigits':2,'maximumFractionDigits':2}));
         }
         if (this.status == 400) {
           console.log('got 400');
@@ -235,10 +239,16 @@ function getBlockHeight() {
 
 function updateBlockHeight() {
   getBlockHeight();
+  // update the block height every 100 seconds
   setTimeout(updateBlockHeight, 1000 * 100);
 }
 
 updateBlockHeight();
+
+$('#x').click(function() {
+  $('#wrapper').html("<a href='https://www.youtube.com/watch?v=p3G5IXn0K7A&ab'><img src=images/Smiley.png width='90'></a>");
+  $('#wrapper').addClass("fun");
+});
 
 </script>
 </body>
