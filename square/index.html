@@ -43,11 +43,13 @@ body {
     margin-right: -130px;
   }
 }
-
+.carousel.pointer-event {
+  touch-action: pan-y pinch-zoom;
+}
 </style>
 <body>
 
-  <div id="my-carousel" class="carousel slide" data-interval="false" data-ride="carousel">
+  <div id="my-carousel" class="carousel slide" data-interval="false" data-wrap="false" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100" src="Package_Page_01.png">
