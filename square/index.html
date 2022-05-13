@@ -31,7 +31,7 @@ body {
   margin-right: -30px;
 }
 /* Larger screens */
-@media (min-width:1000px) {
+@media (min-width:1350px) {
   #my-carousel {
     max-width:90%;
   }
@@ -49,9 +49,9 @@ body {
 </style>
 <body>
 
-  <div id="my-carousel" class="carousel slide" data-interval="false" data-ride="carousel">
+  <div id="my-carousel" class="carousel slide" data-interval="false" data-wrap="false" data-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active">
+    <div class="carousel-item active" id="first"> <!-- FIRST SLIDE -->
       <img class="d-block w-100" src="Package_Page_01.png">
     </div>
     <div class="carousel-item">
@@ -76,19 +76,16 @@ body {
       <img class="d-block w-100" src="Package_Page_08.png">
     </div>
     <div class="carousel-item">
-      <a href="mailto:ping@cypher.institute"><img class="d-block w-100" src="Package_Page_09.png"></a>
-    </div>
-    <div class="carousel-item">
       <a href="https://youtu.be/g5B3wlk-yIw?t=172" target="_blank"><img class="d-block w-100" src="Package_Page_10.png"></a>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="Package_Page_11.png">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" id="last"> <!-- LAST SLIDE -->
       <a href="mailto:ping@cypher.institute"><img class="d-block w-100" src="Package_Page_12.png"></a>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#my-carousel" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#my-carousel" role="button" data-slide="prev" style="display:none">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
@@ -97,7 +94,41 @@ body {
     <span class="sr-only">Next</span>
   </a>
 </div>
+
 <script>
+// Hide first arrow on first page and last arrow on last page
+var myCarousel   = $('#my-carousel');
+var itemFirst    = $('#first');
+var itemLast     = $('#last');
+var controlLeft  = $('.carousel-control-prev');
+var controlRight = $('.carousel-control-next');
+
+myCarousel.on('slid.bs.carousel', function() {
+  hideControl();
+});
+myCarousel.on('slide.bs.carousel', function() {
+  showControl();
+});
+
+function hideControl() {
+  if ( itemFirst.hasClass('active') ) {
+    controlLeft.hide();
+  }
+  if ( itemLast.hasClass('active') ) {
+    controlRight.hide();
+  }
+}
+
+function showControl() {
+  if ( itemFirst.hasClass('active') ) {
+    controlLeft.show();
+  }
+  if ( itemLast.hasClass('active') ) {
+    controlRight.show();
+  }
+}
+
+// Control carousel with arrow keys
 $(document).on('keydown',function(e) {
     if(e.which == 39) { // right arrow
         $('.carousel-control-next').click();
