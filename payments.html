@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CYPHER</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png" href="images/Smiley.png"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+html,body {
+  background-color:#dad7d7;
+  height:95%;
+  font-family: 'VT323', monospace;
+  font-size:22px;
+  color:#2938fa;
+}
+a {
+  color:red;
+}
+a:hover {
+  color:red;
+}
+#wrapper {
+  margin: 0 auto;
+  margin-top:30px;
+  width:93%;
+  /* height:90%; */
+  max-width:1000px;
+  min-height:500px;
+  border: 4px solid #2938fa;
+  background-color:#f8eaf3;
+}
+.fun {
+  border:0px!important;
+  background-color:transparent!important;
+  text-align:center!important;
+  margin-top:200px!important;
+}
+#header {
+  background-color:#eca6d8;
+  height:26px;
+  border-bottom: 4px solid #2938fa;
+  margin-left:0px;
+  margin-right:0px;
+  text-align:right;
+  padding-right:6px;
+  font-size:20px;
+  line-height:26px;
+}
+#header-left {
+  float:left;
+  background:url("images/Buttons.jpg");
+  background-repeat:no-repeat;
+  background-position: calc(50% + 1px);
+  background-color:#eca6d8;
+  border-right: 4px solid #2938fa;
+  margin-top:0px;
+  height:26px;
+  width:calc(12% + 1px);
+}
+#header-right {
+  background-color:white;
+  float:left;
+  text-align:right;
+  width:calc(88% - 8px);
+}
+#body-right {
+  display:none;
+  background:url('images/Arrows.jpg');
+  background-size:100%;
+  background-position:bottom;
+  background-repeat:no-repeat;
+  background-color:white;
+  float:right;
+  height:calc(100% + 1px);
+  width:25px;
+  margin-right:-4px;
+  padding-right:1px;
+  border-left:4px solid #2938fa;
+}
+#left-div {
+  float:left;
+  width:calc(12%);
+  border-right: 4px solid #2938fa;
+  height:calc(100% - 30px);
+  background:url("images/CYPHER background.jpg");
+  background-size:40px 40px;
+}
+#right-div {
+  float:left;
+  width:calc(88% - 8px);
+  height:calc(100% - 31px);
+}
+#x {
+  cursor:pointer;
+  overflow:hidden;
+  background:url('images/x.png');
+  background-color:#eca6d8;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:18px;
+  width:25px;
+  float:right;
+  margin-left:26px;
+  margin-right:-9px;
+  padding-right:1px;
+  border-left:4px solid #2938fa;
+}
+#diagram {
+  right:10%;
+  bottom:10%;
+}
+#text {
+  text-transform:uppercase;
+  line-height:30px;
+  letter-spacing:.6px;
+}
+#footer {
+  height:20px;
+}
+/* Medium View */
+@media (min-width:801px) and (max-width:1000px) {
+  #wrapper {
+    /* max-height:550px; */
+  }
+  #content {
+    font-size:19px;
+  }
+  #logo {
+    padding-bottom:20px;
+  }
+  #logo-img {
+    width:190px;
+  }
+  #inner-left {
+    padding-top:80px;
+    padding-left:10%;
+    width:270px;
+    float:left;
+  }
+  #diagram {
+    float:left;
+    padding-top:200px;
+    padding-left:10%;
+  }
+  #diagram-img {
+    width:220px;
+  }
+}
+/* Desktop View */
+@media (min-width:1001px) {
+  #wrapper {
+    /* max-height:550px; */
+  }
+  #content {
+    font-size:24px;
+  }
+  #logo {
+    padding-bottom:20px;
+  }
+  #logo-img {
+    width:230px;
+  }
+  #inner-left {
+    padding-top:80px;
+    padding-left:100px;
+    width:280px;
+    float:left;
+  }
+  #diagram {
+    float:left;
+    padding-top:170px;
+    padding-left:110px;
+  }
+  #diagram-img {
+    width:300px;
+  }
+}
+/* Scroll bars */
+@media (min-width:875px) and (max-width:1000px) {
+  #body-right {
+    display:block;
+  }
+}
+@media (min-width:1200px) {
+  #body-right {
+    display:block;
+  }
+}
+
+/* Mobile View */
+@media (max-width:800px) {
+  #logo, #diagram {
+    margin-top:40px;
+    text-align:center;
+  }
+  #diagram {
+    padding-left:4px;
+  }
+  #content {
+    padding:18px;
+    padding-bottom:0px;
+  }
+  #header-left {
+    background-size:72px;
+  }
+  #text {
+    padding-left:2px;
+    margin-top:10px;
+    margin-bottom:-10px;
+    /* text-align:justify; */
+  }
+  #wrapper {
+    margin-top:20px;
+  }
+  html,body, #wrapper {
+    /* height:675px; */
+  }
+}
+/* End Mobile View */
+
+</style>
+</head>
+
+<body>
+    <div id="wrapper">
+    <div id="header">
+      <div id="header-left"></div>
+      <div id="header-right">
+        <div style="display:inline-block;">CYPHER • BLOCK <span id="block-height">670,660</id></div> <!-- © BLOCK 670,660 -->
+        <div id="x">&nbsp;</div>
+      </div>
+    </div>
+    <!--div id="left-div"></div>
+    <div id="right-div">
+      <div id="inner-left">
+      <div id="logo"><img id="logo-img" src="images/Cypher Logo Small.png" width=200px></div>
+      <div id="content">
+        <div id="text">
+          CYPHER offers custom bitcoin and dev education packages tailored to your company's needs. inquire by sending us a message to  <a href="mailto:ping@cypher.institute">ping@cypher.institute</a>, And we'll be in touch shortly.
+        </div>
+      </div>
+      </div> <!-- inner left >
+      <div id="diagram"><img id="diagram-img" src="images/Diagram.jpg"></div>
+      <div id="body-right"></div>
+    </div> <!-- right div -->
+    <div style="max-width:300px; margin:0 auto; padding-top:40px; padding-bottom:20px"> <!-- payments -->
+      <center>
+      <div id="logo"><img id="logo-img" src="images/Cypher Logo Small.png" width=200px></div>
+      <!-- start paypal -->
+      <div id="smart-button-container">
+          <div style="text-align: center"><label for="description">Payment For: </label><input type="text" name="descriptionInput" id="description" maxlength="127" value="Cypher Invoice"></div>
+            <p id="descriptionError" style="height:1px!important; visibility: hidden; color:red; text-align: center;">Please enter a description</p>
+          <div style="text-align: center"><label for="amount">Amount: </label><input name="amountInput" type="number" id="amount" value="" ><span> USD</span></div>
+            <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
+          <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="" ></div>
+            <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
+          <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+        </div>
+        <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+        <script>
+        function initPayPalButton() {
+          var description = document.querySelector('#smart-button-container #description');
+          var amount = document.querySelector('#smart-button-container #amount');
+          var descriptionError = document.querySelector('#smart-button-container #descriptionError');
+          var priceError = document.querySelector('#smart-button-container #priceLabelError');
+          var invoiceid = document.querySelector('#smart-button-container #invoiceid');
+          var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
+          var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
+
+          var elArr = [description, amount];
+
+          if (invoiceidDiv.firstChild.innerHTML.length > 1) {
+            invoiceidDiv.style.display = "block";
+          }
+
+          var purchase_units = [];
+          purchase_units[0] = {};
+          purchase_units[0].amount = {};
+
+          function validate(event) {
+            return event.value.length > 0;
+          }
+
+          paypal.Buttons({
+            style: {
+              color: 'black',
+              shape: 'rect',
+              label: 'pay',
+              layout: 'vertical',
+
+            },
+
+            onInit: function (data, actions) {
+              actions.disable();
+
+              if(invoiceidDiv.style.display === "block") {
+                elArr.push(invoiceid);
+              }
+
+              elArr.forEach(function (item) {
+                item.addEventListener('keyup', function (event) {
+                  var result = elArr.every(validate);
+                  if (result) {
+                    actions.enable();
+                  } else {
+                    actions.disable();
+                  }
+                });
+              });
+            },
+
+            onClick: function () {
+              if (description.value.length < 1) {
+                descriptionError.style.visibility = "visible";
+              } else {
+                descriptionError.style.visibility = "hidden";
+              }
+
+              if (amount.value.length < 1) {
+                priceError.style.visibility = "visible";
+              } else {
+                priceError.style.visibility = "hidden";
+              }
+
+              if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
+                invoiceidError.style.visibility = "visible";
+              } else {
+                invoiceidError.style.visibility = "hidden";
+              }
+
+              purchase_units[0].description = description.value;
+              purchase_units[0].amount.value = amount.value;
+
+              if(invoiceid.value !== '') {
+                purchase_units[0].invoice_id = invoiceid.value;
+              }
+            },
+
+            createOrder: function (data, actions) {
+              return actions.order.create({
+                purchase_units: purchase_units,
+              });
+            },
+
+            onApprove: function (data, actions) {
+              return actions.order.capture().then(function (orderData) {
+
+                // Full available details
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                // Show a success message within this page, e.g.
+                const element = document.getElementById('paypal-button-container');
+                element.innerHTML = '';
+                element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                // Or go to another URL:  actions.redirect('thank_you.html');
+
+              });
+            },
+
+            onError: function (err) {
+              console.log(err);
+            }
+          }).render('#paypal-button-container');
+        }
+        initPayPalButton();
+        </script>
+    </div> <!-- payments -->
+
+    </div> <!-- wrapper -->
+    <div id="footer"> </div>
+
+<script>
+function getBlockHeight() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var blockHeight = JSON.parse(xhttp.responseText);
+            console.log(blockHeight);
+            $('#block-height').html(blockHeight.toLocaleString('en-US'));
+        }
+        if (this.status == 400) {
+          console.log('got 400');
+        }
+    };
+    xhttp.open("GET", "https://blockstream.info/api/blocks/tip/height");
+    xhttp.send();
+}
+
+function updateBlockHeight() {
+  getBlockHeight();
+  // update the block height every 100 seconds
+  setTimeout(updateBlockHeight, 1000 * 100);
+}
+
+updateBlockHeight();
+
+$('#x').click(function() {
+  $('#wrapper').html("<a href='https://www.youtube.com/watch?v=p3G5IXn0K7A&ab' target='_blank'><img src=images/Smiley.png width='90'></a>");
+  $('#wrapper').addClass("fun");
+});
+
+</script>
+</body>
+</html>
